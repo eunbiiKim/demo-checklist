@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+class ChecklistViewController: UITableViewController {
     
     var items = [ChecklistItem]()
     
@@ -39,17 +39,15 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        
-        
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return items.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         let item = items[indexPath.row]
@@ -77,7 +75,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
     
-
+    
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         if item.checked {
             cell.accessoryType = .checkmark
@@ -113,18 +111,36 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         navigationController?.popViewController(animated: true)
     }
     
-
-   
+    //MARK: - Add Item ViewController Delegates
+    
+//    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+//        navigationController?.popViewController(animated: true)
+//    }
+//
+//    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+//        let newRowIndex = items.count
+//        items.append(item)
+//
+//        let indexPath = IndexPath(row: newRowIndex, section: 0)
+//        let indexPaths = [indexPath]
+//        tableView.insertRows(at: indexPaths, with: .automatic)
+//
+//        navigationController?.popViewController(animated: true)
+//
+//
+//    }
+    
+    
     
     // MARK: - Navigation
-
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            //1.
-            if segue.identifier == "AddItem" {
-                //2.
-                let controller = segue.destination as! AddItemViewController
-                //3.
-                controller.delegate = self
-            }
-    }
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        //1.
+//        if segue.identifier == "AddItem" {
+//            //2.
+//            let controller = segue.destination as! AddItemViewController
+//            //3.
+//            controller.delegate = self as! AddItemViewControllerDelegate
+//        }
+//    }
 }
