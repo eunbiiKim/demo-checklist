@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		93188E9C238533CD00DE173D /* AllListsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93188E9B238533CD00DE173D /* AllListsTableViewController.swift */; };
+		93188E9E23853A9700DE173D /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93188E9D23853A9700DE173D /* Checklist.swift */; };
 		93D5F0712383B2CE001FBA0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D5F0702383B2CE001FBA0E /* AppDelegate.swift */; };
 		93D5F0732383B2CE001FBA0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D5F0722383B2CE001FBA0E /* SceneDelegate.swift */; };
 		93D5F0782383B2CE001FBA0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D5F0762383B2CE001FBA0E /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		93188E9B238533CD00DE173D /* AllListsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListsTableViewController.swift; sourceTree = "<group>"; };
+		93188E9D23853A9700DE173D /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		93D5F06D2383B2CE001FBA0E /* Checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5F0702383B2CE001FBA0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93D5F0722383B2CE001FBA0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				93D5F0702383B2CE001FBA0E /* AppDelegate.swift */,
 				93D5F0722383B2CE001FBA0E /* SceneDelegate.swift */,
+				93188E9D23853A9700DE173D /* Checklist.swift */,
 				93D5F0862383CDC1001FBA0E /* ChecklistItem.swift */,
 				93188E9B238533CD00DE173D /* AllListsTableViewController.swift */,
 				93D5F0842383B3EE001FBA0E /* ChecklistViewController.swift */,
@@ -153,6 +156,7 @@
 				93D5F0852383B3EE001FBA0E /* ChecklistViewController.swift in Sources */,
 				93D5F0732383B2CE001FBA0E /* SceneDelegate.swift in Sources */,
 				93D5F0872383CDC1001FBA0E /* ChecklistItem.swift in Sources */,
+				93188E9E23853A9700DE173D /* Checklist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

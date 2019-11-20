@@ -11,6 +11,7 @@ import UIKit
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     
     var items = [ChecklistItem]()
+    var checklist: Checklist!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         print("Documents foler is \(documentsDirectory())")
         print("Data file path is \(dataFilePath())")
         navigationItem.largeTitleDisplayMode = .never
+        title = checklist.name
         
     }
     
