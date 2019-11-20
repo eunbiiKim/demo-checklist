@@ -15,22 +15,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="5kT-Xk-8qe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="5kT-Xk-8qe">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5kT-Xk-8qe" id="qXg-Ur-XMs">
-                                    <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzR-sf-rjZ">
-                                            <rect key="frame" x="20" y="11" width="342" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzR-sf-rjZ">
+                                            <rect key="frame" x="37" y="11" width="325" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcq-hA-hEU">
+                                            <rect key="frame" x="12" y="11" width="13" height="27.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hcq-hA-hEU" firstAttribute="top" secondItem="qXg-Ur-XMs" secondAttribute="top" constant="11" id="5Ag-pc-XUs"/>
+                                        <constraint firstItem="BzR-sf-rjZ" firstAttribute="leading" secondItem="qXg-Ur-XMs" secondAttribute="leadingMargin" constant="17" id="FZS-z0-uWs"/>
+                                        <constraint firstItem="BzR-sf-rjZ" firstAttribute="leading" secondItem="hcq-hA-hEU" secondAttribute="trailing" constant="12" id="GfN-Nb-R9v"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="BzR-sf-rjZ" secondAttribute="trailing" constant="-19" id="LSV-Gg-nCz"/>
+                                        <constraint firstItem="BzR-sf-rjZ" firstAttribute="top" secondItem="qXg-Ur-XMs" secondAttribute="topMargin" id="iGW-qf-NkK"/>
+                                        <constraint firstItem="hcq-hA-hEU" firstAttribute="leading" secondItem="qXg-Ur-XMs" secondAttribute="leading" constant="12" id="jMY-gR-ioT"/>
+                                        <constraint firstItem="BzR-sf-rjZ" firstAttribute="centerY" secondItem="qXg-Ur-XMs" secondAttribute="centerY" id="q8Z-nN-Ysc"/>
+                                        <constraint firstAttribute="bottom" secondItem="hcq-hA-hEU" secondAttribute="bottom" constant="5" id="qig-dF-FVK"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="HRg-7Z-yWv" kind="show" identifier="EditItem" trigger="accessoryAction" id="Bww-J5-L1E"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -134,4 +152,7 @@
             <point key="canvasLocation" x="224.63768115942031" y="72.991071428571431"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bww-J5-L1E"/>
+    </inferredMetricsTieBreakers>
 </document>

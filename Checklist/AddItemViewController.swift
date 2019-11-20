@@ -19,11 +19,18 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     weak var delegate: AddItemViewControllerDelegate?
+    var itemToEdit: ChecklistItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let item = itemToEdit {
+            title = "Edit Title"
+            textField.text = item.text
+        }
+        
         navigationItem.largeTitleDisplayMode = .never
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
