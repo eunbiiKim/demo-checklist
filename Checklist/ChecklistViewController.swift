@@ -109,7 +109,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
 //        tableView.insertRows(at: indexPaths, with: .automatic)
 //    }
     
-    //MARK: - Add Item ViewController Delegates
+    //MARK: - Item Detail ViewController Delegates
     
     func ItemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
@@ -169,7 +169,22 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         return documentsDirectory().appendingPathComponent("Checklists.plist")
     }
     
-    
+    //MARK: - Read data from a file
+    func loadChecklistItems() {
+        //1.
+        let path = dataFilePath()
+        //2.
+        if let data = try? Data(contentsOf: path) {
+            //3.
+            let decoder = PropertyListDecoder()
+            do {
+                //4.
+                items = try decoder.decode([ChecklistItem].self, from: data)
+            } catch {
+                print("Error decoding item array: \(error.localizedDescription)")
+            }
+        }
+    }
     
     // MARK: - Navigation
     
