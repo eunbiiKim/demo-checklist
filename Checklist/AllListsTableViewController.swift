@@ -19,6 +19,8 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        loadChecklists()
+        
         var list = Checklist(name: "Birthdays")
         lists.append(list)
         
@@ -31,6 +33,14 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         list = Checklist(name: "To Do")
         lists.append(list)
 
+        for list in lists {
+            let item = ChecklistItem()
+            item.text = "Item for \(list.name)"
+            list.items.append(item)
+        }
+        
+        
+    
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,8 +106,45 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         navigationController?.popViewController(animated: true)
     }
     
+    //MARK:- Data Saving
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     
-    // MARK: - Navigation
+    func dataFilePath() -> URL {
+        return
+            documentsDirectory().appendingPathComponent("Checklist.plist")
+    }
+    
+    // this method is now called saveChecklists()
+    func saveChecklists() {
+        let encoder = PropertyListEncoder()
+        do {
+            // encode lists instead of "items"
+            let data = try encoder.encode(lists)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error encoding list array: \(error.localizedDescription)")
+        }
+    }
+    
+    // this method is now called loadChecklists()
+    func loadChecklists() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                // decode to an object of [Checklist] type to lists
+                lists = try decoder.decode([Checklist].self, from: data)
+            } catch {
+                print("Error decoding list array: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
+    // MARK:- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChecklist" {
             let controller = segue.destination as! ChecklistViewController
