@@ -24,6 +24,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         navigationItem.largeTitleDisplayMode = .never
         title = checklist.name
         
+        
+        
     }
     
     // MARK: - Table view data source
