@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllListsTableViewController: UITableViewController, ListDetailViewControllerDelegate {
+class AllListsTableViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
 
     
     let cellIdentifier = "ChecklistCell"
@@ -18,30 +18,17 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
-        
-        var list = Checklist(name: "Birthdays")
-        dataModel.lists.append(list)
-        
-        list = Checklist(name: "Groceries")
-        dataModel.lists.append(list)
-        
-        list = Checklist(name: "Cool Apps")
-        dataModel.lists.append(list)
-        
-        list = Checklist(name: "To Do")
-        dataModel.lists.append(list)
-
-        for list in dataModel.lists {
-            let item = ChecklistItem()
-            item.text = "Item for \(list.name)"
-            list.items.append(item)
-        }
-        
-        
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        let index = dataModel.indexOfSelectedChecklist
+        if index >= 0 && index < dataModel.lists.count {
+            let checklist = dataModel.lists[index]
+            performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +47,8 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        dataModel.indexOfSelectedChecklist = indexPath.row
         let checklist = dataModel.lists[indexPath.row]
         performSegue(withIdentifier: "ShowChecklist", sender: checklist)
     }
@@ -107,6 +96,13 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK:- Navigation Controller Delegates
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        // Was the back button tapped?
+        if viewController == self {
+            dataModel.indexOfSelectedChecklist = -1
+        }
+    }
    
     
     // MARK:- Navigation
