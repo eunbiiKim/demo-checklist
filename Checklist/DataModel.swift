@@ -48,6 +48,12 @@ class DataModel {
         }
     }
     
+    func sortChecklists() {
+        lists.sort(by: { (list1, list2) -> Bool in
+            return list1.name.localizedStandardCompare(list2.name)
+                                                                == .orderedAscending })
+    }
+    
     // this method is now called loadChecklists()
     func loadChecklists() {
         let path = dataFilePath()
@@ -56,6 +62,7 @@ class DataModel {
             do {
                 // decode to an object of [Checklist] type to lists
                 lists = try decoder.decode([Checklist].self, from: data)
+                sortChecklists()
             } catch {
                 print("Error decoding list array: \(error.localizedDescription)")
             }

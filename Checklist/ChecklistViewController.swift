@@ -9,21 +9,12 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
-    
-    
     var checklist: Checklist!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
-        
-    
         navigationItem.largeTitleDisplayMode = .never
         title = checklist.name
-        
-        
-        
     }
     
     // MARK: - Table view data source
@@ -51,7 +42,6 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             configureCheckmark(for: cell, with: item)
         }
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -60,7 +50,6 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         //2. Delete the corresponding row from the table view.
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        
     }
     
     //MARK: - Configure Checkmark and text
@@ -107,7 +96,6 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         tableView.insertRows(at: indexPaths, with: .automatic)
 
         navigationController?.popViewController(animated: true)
-        
     }
     
     func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
@@ -117,15 +105,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
                 configureText(for: cell, with: item)
             }
         }
-        
         navigationController?.popViewController(animated: true)
-        
     }
-    
-
-
-    
-
     
     // MARK: - Navigation
     
